@@ -1,0 +1,37 @@
+[#Form: Sales Color]
+	
+
+	On : Form Accept : Yes : CALL : SendWhatsapp
+
+[Function: SendWhatsapp]
+
+	Variable: PrintFileName    :String
+	Variable: defaultfilepath  :String:$$String:$Vouchertypename+"_"+$$String:$vouchernumber +$$String:".pdf"
+	Variable: ReceiverContact  :String
+	Variable: Exportedfilepath :String
+    01 :Query Box:"Do you want to Whatsapp the invoice?":Yes:No
+	02 :If:$$LastResult
+	03	: SET : PrintFileName : $$String:$Vouchertypename+"_"+$$String:$vouchernumber ; Export Location path
+	04  : SET : ReceiverContact :$LedgerMobile:Ledger:$PartyLedgerName
+	20	: SET : SVExportFormat 	: $$SysName:PDF
+	40	: SET : SVPrintFileName	: $$MakeExportName:##PrintFileName:##SVExportFormat
+	50	: SET : SVOpenFileAfterExport : No
+	60	: EXPORT REPORT :.: TRUE
+	65  : SET :Exportedfilepath:$$GetFileFullPath:##defaultfilepath
+	70  : Exec COM Interface:WhatsappEngine:##ReceiverContact:##Exportedfilepath
+	80  : Log:$$LastResult
+	100 : End If
+	101 : Return
+			
+		
+[COM Interface:WhatsappEngine]
+	
+    Project:TallyWhatsappsender
+	Class:Class1
+	Interface:InitProcess
+	Parameter:p1:String:In
+	Parameter:p2:String:In
+	Return: String
+	
+
+ 
