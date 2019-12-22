@@ -17,13 +17,12 @@ you can check the version of chrome by open chrome ->go-to settings->help->click
 
 Registering DLL:
 
-1) Download the file TallyWhatsappSender.rar attached below
-2)Extract all the files into Tally folder 
-3)Open CMD in administrator Mode (Elevated mode)
-4) Type cd C:\Windows\Microsoft.NET\Framework64\v4.0.30319 ;; change directory
-5)Type without quote "regasm TallyWhatsappsender.dll /codebase" ;;Give Full path of the TallyWhatsappsender.dll file
-6)you will get success message after it registered
-7) Load WhatsappSenderTally.txt in Tally ;;tdl file for sending whats-app
+1) Download all the files and place them in tally folder (working directory)
+2) Open CMD in administrator Mode (Elevated mode)
+3) Type cd C:\Windows\Microsoft.NET\Framework64\v4.0.30319 ;; change directory
+4) Type without quote "regasm TallyWhatsappsender.dll /codebase" ;;Give Full path of the TallyWhatsappsender.dll file
+5) you will get success message after it registered
+6) Load WhatsappSenderTally.txt in Tally ;;tdl file for sending whats-app
 
 
 Working:
