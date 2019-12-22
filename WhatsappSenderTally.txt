@@ -18,7 +18,7 @@
 	50	: SET : SVOpenFileAfterExport : No
 	60	: EXPORT REPORT :.: TRUE
 	65  : SET :Exportedfilepath:$$GetFileFullPath:##defaultfilepath
-	70  : Exec COM Interface:WhatsappEngine:##ReceiverContact:##Exportedfilepath
+	70  : Exec COM Interface:WhatsappEngine:##ReceiverContact:##Exportedfilepath:@@Msgtitle:@@waitseconds
 	80  : Log:$$LastResult
 	100 : End If
 	101 : Return
@@ -31,7 +31,11 @@
 	Interface:InitProcess
 	Parameter:p1:String:In
 	Parameter:p2:String:In
+	Parameter:p3:String:In
+	Parameter:p4:String:In
 	Return: String
 	
-
+[System:Formulae]
+	Msgtitle:"your title"
+	waitseconds :10 ;; time  in seconds to wait before closing the window
  
