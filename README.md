@@ -55,7 +55,7 @@ it is a COM DLL which send attachments to whats-app by automating the chrome bro
 
 **Possible Errors**
 
-1) "contact number is invalid " - this is due you didn't filled the mobile number in ledger and it should be 12 digit including country code (Ex 911234567890)
+1)"contact number is invalid " - this is due you didn't filled the mobile number in ledger and it should be 12 digit including country      code (Ex 911234567890)
 
 2)"chrome driver not find " - this is due you didn't place all the files in tally folder or chromedriver.exe file is missing or deleted
 
@@ -73,4 +73,5 @@ it is a COM DLL which send attachments to whats-app by automating the chrome bro
 
 2)you can only send sales invoices (You can customize the tdl to send whatever the reports you want)
 
-For Bug Report and fixes please raise an issue.
+
+     For Bug Report and fixes please raise an issue.
