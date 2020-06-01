@@ -7,6 +7,8 @@ language used: c#
 
 it is a COM DLL which send attachments to whats-app by automating the chrome browser
 
+**If you already using earlier version then update or replace all the files with new ones (from the repository)**
+
 **Requirements:**
 
 1)Microsoft.net framework version 4 
