@@ -9,17 +9,11 @@ it is a COM DLL which send attachments to whats-app by automating the chrome bro
 
 **Requirements:**
 
-1)You Must have latest Version of Google Chrome browser installed on your system or update existing one
+1)Microsoft.net framework version 4 
 
-2)Required Chrome Version :79.x.x.xx
+2)Make sure to place all the extracted files in tally folder - All files should come under Tally Working Directory
 
-3)You can check the version of chrome by open chrome ->go-to settings->help->click on about chrome
-
-4)Microsoft.net framework version 4 
-
-5)Make sure to place all the extracted files in tally folder
-
-6).Net Framework 4.x.x
+3).Net Framework 4.x.x
 
   You can Download from here : https://dotnet.microsoft.com/download/dotnet-framework/net40
   
@@ -71,8 +65,12 @@ it is a COM DLL which send attachments to whats-app by automating the chrome bro
 
 5)"vertical page breaks are too high" - this is tdl error make sure page size is to A4 and orientation is portrait , you can check this by pressing ALT+E in voucher and accept it once
 
+5)"contact not found in whatsapp database" - this is due the contact doesn't have whatsapp account or blocked
+
 **Limitations**
 
 1)Currently you can only send to single contact number (multiple contact support will be added in next update)
 
 2)you can only send sales invoices (You can customize the tdl to send whatever the reports you want)
+
+For Bug Report and fixes please raise an issue.
