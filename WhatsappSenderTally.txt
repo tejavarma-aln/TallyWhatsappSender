@@ -1,27 +1,36 @@
 [#Form: Sales Color]
 	
-
 	On : Form Accept : Yes : CALL : SendWhatsapp
 
 [Function: SendWhatsapp]
 
 	Variable: PrintFileName    :String
-	Variable: defaultfilepath  :String:$$String:$Vouchertypename+"_"+$$String:$vouchernumber +$$String:".pdf"
 	Variable: ReceiverContact  :String
 	Variable: Exportedfilepath :String
-    01 :Query Box:"Do you want to Whatsapp the invoice?":Yes:No
-	02 :If:$$LastResult
-	03	: SET : PrintFileName : $$String:$Vouchertypename+"_"+$$String:$vouchernumber ; Export Location path
-	04  : SET : ReceiverContact :$LedgerMobile:Ledger:$PartyLedgerName
-	20	: SET : SVExportFormat 	: $$SysName:PDF
-	40	: SET : SVPrintFileName	: $$MakeExportName:##PrintFileName:##SVExportFormat
-	50	: SET : SVOpenFileAfterExport : No
-	60	: EXPORT REPORT :.: TRUE
-	65  : SET :Exportedfilepath:$$GetFileFullPath:##defaultfilepath
-	70  : Exec COM Interface:WhatsappEngine:##ReceiverContact:##Exportedfilepath:@@Msgtitle:@@waitseconds
-	80  : Log:$$LastResult
-	100 : End If
-	101 : Return
+	Local Formula:Wpinvoicetype:$$StringFindAndReplace:$VoucherTypeName:"\":"-"
+	Local Formula:Wpinvoiceparty:$$StringFindAndReplace:$PartyLedgerName:"\":"-"
+	Local Formula:Wpinvoicedate:$$String:$Date
+	
+    01   : Query Box:"Do you want to Whatsapp the invoice?":Yes:No
+	02   : If:$$LastResult
+	03   : If: NOT $$IsDirectory:"Exported PDFs"
+	04   : Make Dir:"Exported PDFs"
+	05   : End If
+	06   : SET : ReceiverContact :$LedgerMobile:Ledger:$PartyLedgerName
+	07   : If:$$IsEmpty:##ReceiverContact
+	08   : Log: "Invalid party mobile number, Please enter valid mobile number in ledger"  
+	09   : Return
+	10   : End If
+	11   : SET : PrintFileName :"Exported PDFs"+"\"+@Wpinvoicetype+"_"+@Wpinvoiceparty+"_"+@Wpinvoicedate ; Export file name
+    12   : SET : SVExportFormat 	: $$SysName:PDF
+	13   : SET : SVPrintFileName	: $$MakeExportName:##PrintFileName:##SVExportFormat
+	14   : SET : SVOpenFileAfterExport : No
+	15   : EXPORT REPORT :.: TRUE
+	16   : SET :Exportedfilepath:$$GetFileFullPath:##SVPrintFileName  ;;Exported file path
+    17   : Exec COM Interface:WhatsappEngine:##ReceiverContact:##Exportedfilepath:@@Msgtitle:@@waitseconds
+	18   : Log:$$LastResult
+	19   : End If
+	20   : Return
 			
 		
 [COM Interface:WhatsappEngine]
@@ -36,6 +45,6 @@
 	Return: String
 	
 [System:Formulae]
-	Msgtitle:"your title"
-	waitseconds :10 ;; time  in seconds to wait before closing the window
+	Msgtitle:"Default Title" ;; Title Message to send
+	waitseconds :"3" ;; time  in seconds to wait before closing the window
  
