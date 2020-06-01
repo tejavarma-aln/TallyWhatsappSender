@@ -11,7 +11,7 @@ it is a COM DLL which send attachments to whats-app by automating the chrome bro
 
 1)Microsoft.net framework version 4 
 
-2)Make sure to place all the extracted files in tally folder - All files should come under Tally Working Directory
+2)Make sure to place all the files in tally folder - All files should come under Tally Working Directory
 
 3).Net Framework 4.x.x
 
