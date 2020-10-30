@@ -1,13 +1,13 @@
-# TallyWhatsappSender
+# Tally WhatsappSender
 
 **Alert : If you already using earlier version then update or replace all the files with new ones (from the repository)**
 
 Send Attachments(Invoices, reports) to Client's Whats-app  without having any API  
 using selenium library and chromium driver for perofming automated tasks and controlling the browser
 
-language used: c#
+Language used: c#
 
-it is a COM DLL which send attachments to whats-app by automating the chrome browser
+It is a COM DLL which sends attachments to whats-app by automating the chrome browser using selenium and chrome driver
 
 **Requirements:**
 
