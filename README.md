@@ -23,22 +23,23 @@ it is a COM DLL which send attachments to whats-app by automating the chrome bro
 
 **Get Started and Registering DLL**
 
-1) Download all the files and place them in tally folder (working directory)
+-> Download all the files and place them in tally folder (working directory)
 
-2) Open CMD in administrator Mode (Elevated mode)
+-> Open CMD in administrator Mode (Elevated mode)
 
            For 64 Bit
-3) Type cd C:\Windows\Microsoft.NET\Framework64\v4.0.30319 ;; change directory
+-> Type cd <space> C:\Windows\Microsoft.NET\Framework64\v4.0.30319 ;; change directory
 
            For 32 Bit
-3) Type cd C:\Windows\Microsoft.NET\Framework\v4.0.30319 ;; change directory
+-> Type cd <space> C:\Windows\Microsoft.NET\Framework\v4.0.30319 ;; change directory
 
+          Give Full path of the TallyWhatsappsender.dll file inside double quotes
+          
+-> Type regasm <space> "fullpathto\TallyWhatsappsender.dll" <space> /codebase
 
-4) Type regasm TallyWhatsappsender.dll /codebase ;;Give Full path of the TallyWhatsappsender.dll file
+-> you will get success message after it registered
 
-5) you will get success message after it registered
-
-6) Load WhatsappSenderTally.txt in Tally ;;tdl file for sending whats-app
+-> Load WhatsappSenderTally.txt in Tally ;;tdl file for sending whats-app
 
 
 **Working**
@@ -51,13 +52,13 @@ it is a COM DLL which send attachments to whats-app by automating the chrome bro
 
 4)Then Chrome Browser will open Automatically and Navigate to Whats-app site
 
-5) It will wait until you scan the QrCode
+5) It will wait until you scan the QrCode (Max 60 seconds)
 
-6)Then it send the attachment to the contact and Close the browser window
+6)Then it send the Attachment/Message to the contact and Close the browser window
 
 **Possible Errors**
 
-1)"contact number is invalid " - this is due you didn't filled the mobile number in ledger and it should be 12 digit including country      code (Ex 911234567890)
+1)"contact number is invalid " - this is due you didn't filled the mobile number in ledger and it should be 12 digit including country code (Example - 911234567890)
 
 2)"chrome driver not find " - this is due you didn't place all the files in tally folder or chromedriver.exe file is missing or deleted
 
@@ -69,11 +70,12 @@ it is a COM DLL which send attachments to whats-app by automating the chrome bro
 
 5)"contact not found in whatsapp database" - this is due the contact doesn't have whatsapp account or blocked
 
-**Limitations**
+**Suggestion**
 
-1)Currently you can only send to single contact number (multiple contact support will be added in next update)
+-> You can extend the functionality by enhancing the tdl and dll code
+-> Explore the source code and make improvements as per your needs
 
-2)you can only send sales invoices (You can customize the tdl to send whatever the reports you want)
+ 
 
 
      For Bug Report and fixes please raise an issue.
