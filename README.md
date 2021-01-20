@@ -1,19 +1,19 @@
 # Tally WhatsappSender
 
-**Alert : If you already using earlier version then update or replace all the files with new ones (from the repository)**
+**Alert : If you already using earlier version then replace all the files with new ones (from the repository)**
 
 Send Attachments(Invoices, reports) to Client's Whats-app  without having any API  
-using selenium library and chromium driver for perofming automated tasks and controlling the browser
 
-Language used: c#
+**Added : Support for sending multiple contacts**
 
-It is a COM DLL which sends attachments to whats-app by automating the chrome browser using selenium and chrome driver
 
 **Requirements:**
 
 -> Microsoft.net framework version 4 
 
 -> Make sure to place all the files in tally folder - All files should come under Tally Working Directory
+
+-> Chrome application/binary
 
 -> Dot Net Framework 4.x.x (version 4 or higher)
 
@@ -23,7 +23,9 @@ It is a COM DLL which sends attachments to whats-app by automating the chrome br
 
 **Get Started and Registering DLL**
 
--> Download all the files and place them in tally folder (working directory)
+-> Download and unzip the files from  https://github.com/tejavarma-aln/TallyWhatsappSender/blob/master/Binary/TallyWhatsappsender.zip
+
+-> Place all the files under tally working directory 
 
 -> Open CMD in administrator Mode (Elevated mode)
 
@@ -37,16 +39,18 @@ It is a COM DLL which sends attachments to whats-app by automating the chrome br
           
 -> Type regasm <space> "fullpathto\TallyWhatsappsender.dll" <space> /codebase
 
--> you will get success message after it registered
+-> You will get success message after it registered
 
--> Load WhatsappSenderTally.txt in Tally ;;tdl file for sending whats-app
+-> Load WhatsappSenderTally.txt in Tally and start using ;;tdl file for sending whats-app
 
 
 **Working**
 
 -> After Registering and Loading the TDL open or create a sales voucher
 
--> Ledger(Party) Mobile Number Should be filled and it should be 12 digits including country code(see the image below)
+-> Ledger(Party) Mobile Number Should be filled and it should be 12 digits including country code
+
+-> You can put comma seperated value of contact numbers in ledger mobile number for sending to multiple
 
 -> On Saving the voucher it will it will ask to send whats-app then it will export the invoice
 
@@ -64,19 +68,12 @@ It is a COM DLL which sends attachments to whats-app by automating the chrome br
 
 -> "attachment not found" - this is due invoice not exported properly after saving, check weather invoice is exported after save or not
 
--> "Classification not found" - this is due to contact number doesn't have whats-app account check weather party has whats-app account linked to that number or not 
 
--> "vertical page breaks are too high" - this is tdl error make sure page size is to A4 and orientation is portrait , you can check this by pressing ALT+E in voucher and accept it once
-
--> "contact not found in whatsapp database" - this is due the contact doesn't have whatsapp account or blocked
-
-**Suggestions**
+**Support**
 
 -> You can extend the functionality by enhancing the tdl and dll code
 
 -> Explore the source code and make improvements as per your needs
-
- 
 
 
      For Bug Report and fixes please raise an issue.
