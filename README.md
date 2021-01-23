@@ -1,6 +1,6 @@
 # Tally WhatsappSender
 
-**Alert : If you already using earlier version then replace all the files with new ones (from the repository)**
+**Check out source code here - https://github.com/tejavarma-aln/TallyWhatsappSender/tree/master/Binary**
 
 Send Attachments(Invoices, reports) to Client's Whats-app  without having any API  
 
