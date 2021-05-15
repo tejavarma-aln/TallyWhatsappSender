@@ -1,7 +1,5 @@
 # Tally WhatsappSender
 
-**Check out source code here - https://github.com/tejavarma-aln/TallyWhatsappSender/tree/master/Binary**
-
 Send Attachments(Invoices, reports) to Client's Whats-app  without having any API  
 
 **Added : Support for sending multiple contacts**
@@ -13,7 +11,7 @@ Send Attachments(Invoices, reports) to Client's Whats-app  without having any AP
 
 -> Make sure to place all the files in tally folder - All files should come under Tally Working Directory
 
--> Chrome application/binary
+-> Chrome application
 
 -> Dot Net Framework 4.x.x (version 4 or higher)
 
@@ -23,7 +21,7 @@ Send Attachments(Invoices, reports) to Client's Whats-app  without having any AP
 
 **Get Started and Registering DLL**
 
--> Download and unzip the files from  https://github.com/tejavarma-aln/TallyWhatsappSender/blob/master/Binary/TallyWhatsappsender.zip
+-> Download or clone all the files from  https://github.com/tejavarma-aln/TallyWhatsappSender/tree/master/Binary
 
 -> Place all the files under tally working directory 
 
