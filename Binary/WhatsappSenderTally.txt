@@ -1,0 +1,58 @@
+[#Form: Sales Color]
+	
+	On : Form Accept : Yes : CALL : SendWhatsapp
+
+[Function: SendWhatsapp]
+
+	Variable: PrintFileName    :String
+	Variable: Contacts  :String
+	Variable: Exportedfilepath :String
+	Local Formula:Wpinvoicetype:$$StringFindAndReplace:$VoucherTypeName:"\":"-"
+	Local Formula:Wpinvoiceparty:$$StringFindAndReplace:$PartyLedgerName:"\":"-"
+	Local Formula:Wpinvoicedate:$$String:$Date
+	
+    01   : Query Box:"Do you want to Whatsapp the invoice?":Yes:No
+	02   : If:$$LastResult
+	03   : If: NOT $$IsDirectory:"TallyWhatsapp"
+	04   : Make Dir:"TallyWhatsapp"
+	05   : End If
+	06   : SET : Contacts :@@GetContacts
+	07   : If:$$IsEmpty:##Contacts
+	08   : Msg Box:"Info": "Empty mobile numbers"  
+	09   : Return
+	10   : End If
+	11   : Set:  SVBrowserWidth :210
+	12   : Set:  SVBrowserHeight : 297
+	13   : Set:  SVIsPortrait	: Yes
+	14   : SET : PrintFileName :"TallyWhatsapp"+"\"+@Wpinvoicetype+"_"+@Wpinvoiceparty+"_"+@Wpinvoicedate ; Export file name
+    15   : SET : SVExportFormat 	: $$SysName:PDF
+	16   : SET : SVPrintFileName	: $$MakeExportName:##PrintFileName:##SVExportFormat
+	17   : SET : SVOpenFileAfterExport : No
+	18   : EXPORT REPORT :.: Yes:Yes
+	19   : SET :Exportedfilepath:$$GetFileFullPath:##SVPrintFileName  ;;Exported file path
+	20   : If: $$IsCOMInterfaceInvokable:WhatsappEngine
+    21   : Exec COM Interface:WhatsappEngine:##Contacts:##Exportedfilepath:@@Msgtitle:@@ChromeBinaryPath
+	22   : Msg Box:"Status":$$LastResult
+	23   : Else
+	24   : Msg Box:"Info":"COM Interface is not invokable or\n DLL is not registered"
+	25   : End If
+	26   : End If
+	27   : Return
+			
+		
+[COM Interface:WhatsappEngine]
+	
+    Project:TallyWhatsappsender
+	Class:Class1
+	Interface:InitProcess
+	Parameter:p1:String:In
+	Parameter:p2:String:In
+	Parameter:p3:String:In
+	Parameter:p4:String:In
+	Return: String
+	
+[System:Formulae]
+	Msgtitle:"Default Title" ;; Title Message to send
+	GetContacts :($LedgerMobile:Ledger:$PartyLedgerName)+"," ;; comma separated value of contacts to send
+	ChromeBinaryPath : "C:\Program Files\Google\Chrome\Application\chrome.exe" ;; path to chrome application in your system
+ 
