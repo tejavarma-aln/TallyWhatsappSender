@@ -59,7 +59,7 @@ namespace TallyWhatsappsender
                     try
                     {
                         WebDriverWait wait = new WebDriverWait(chrome_driver, System.TimeSpan.FromSeconds(60));
-                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='main']/header/div[3]/div/div[2]/div/span")));
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='main']/footer/div[1]/div[2]/div/div[2]")));
                     }
                     catch (WebDriverTimeoutException)
                     {
